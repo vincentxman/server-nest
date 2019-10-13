@@ -1,9 +1,11 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, Req, Res } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
 import { CreateItemDto } from './dto/create-item.dto';
-import { Request, Response } from 'express';
+import { ItemsService } from './items.service';
+import { Item } from './interfaces/item.interface';
 
 @Controller('items')
 export class ItemsController {
+    constructor(private readonly itemsService: ItemsService) { }
     // CRUD Create/Read/Update/Delete
 
     @Post()
@@ -12,13 +14,13 @@ export class ItemsController {
     }
 
     @Get()
-    readAll(): string {
-        return 'Get all items';
+    async readAll(): Promise<Item[]> {
+        return this.itemsService.readAll();
     }
 
     @Get(':id')
-    readOne(@Param('id') id) {
-        return `Item ${id}`;
+    async readOne(@Param('id') id): Promise<Item> {
+        return this.itemsService.readOne(id);
     }
 
     @Put(':id')

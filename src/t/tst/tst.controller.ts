@@ -1,8 +1,8 @@
 import { Controller, Get, Req, Res, HttpCode, Post } from '@nestjs/common';
 import { Request, Response } from 'express';
 
-import { products, Product } from '../../../model/t/products';
-import { heroes, Hero } from '../../../model/t/heroes';
+import { products, Product } from './mockdata/products';
+import { heroes, Hero } from './mockdata/heroes';
 
 @Controller('tst')
 export class TstController {

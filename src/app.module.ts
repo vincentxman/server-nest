@@ -1,13 +1,16 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './controller/app.controller';
-import { AppService } from './service/app.service';
-import { TstController } from './controller/t/tst/tst.controller';
-import { ItemsController } from './controller/items/items.controller';
-import { ItemsService } from './service/items/items.service';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { TstController } from './t/tst/tst.controller';
+import { ItemsController } from './items/items.controller';
+import { ItemsService } from './items/items.service';
+import { ItemsModule } from './items/items.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import config from './config/keys';
 
 @Module({
-  imports: [],
-  controllers: [AppController, TstController, ItemsController],
-  providers: [AppService, ItemsService],
+  imports: [ItemsModule, MongooseModule.forRoot(config.mongoURI, config.mongoOpts)],
+  controllers: [AppController, TstController],
+  providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
