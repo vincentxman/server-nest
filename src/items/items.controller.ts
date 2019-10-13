@@ -9,8 +9,8 @@ export class ItemsController {
     // CRUD Create/Read/Update/Delete
 
     @Post()
-    create(@Body() createItemDto: CreateItemDto): string {
-        return `Name: ${createItemDto.name}, Desc: ${createItemDto.description}`;
+    async create(@Body() createItemDto: CreateItemDto): Promise<Item> {
+        return this.itemsService.create(createItemDto);
     }
 
     @Get()
@@ -24,13 +24,13 @@ export class ItemsController {
     }
 
     @Put(':id')
-    update(@Param('id') id, @Body() updateItemDto: CreateItemDto): string {
-        return `Update ${id} - Name: ${updateItemDto.name}`;
+    async update(@Param('id') id, @Body() updateItemDto: CreateItemDto): Promise<Item> {
+        return this.itemsService.update(id, updateItemDto);
     }
 
     @Delete(':id')
-    delete(@Param('id') id): string {
-        return `Delete ${id}`;
+    async delete(@Param('id') id): Promise<Item> {
+        return this.itemsService.delete(id);
     }
 
 }
