@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as serveStatic from 'serve-static';
 import * as path from 'path';
+import config from './config/keys';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -11,7 +12,7 @@ async function bootstrap() {
   ));
 
   await app.startAllMicroservicesAsync();
-  await app.listen(3000);
+  await app.listen(config.port);
 
 }
 bootstrap();

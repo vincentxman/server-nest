@@ -1,9 +1,15 @@
 export default {
+    port: 8000,
     mongoURI: 'mongodb://testAdmin:testAdmin12345@localhost:37018/test',
     mongoOpts: {
         promiseLibrary: require('bluebird'),
         useNewUrlParser: true,
         useUnifiedTopology: true,
+    },
+    graphOpts: {
+        debug: true,
+        playground: true,
+        autoSchemaFile: 'schema.gql',
     },
 };
 // 服务启动 port改成 “--port 37018”， 需要验证密码 “--auth”
