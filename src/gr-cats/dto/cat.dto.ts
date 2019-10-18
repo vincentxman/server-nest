@@ -3,7 +3,7 @@ import { IsOptional, Length, MaxLength, Min } from 'class-validator';
 import { Field, InputType } from 'type-graphql';
 
 @InputType()
-export class NewCatInput {
+export class CatDto {
     @Field()
     name: string;
 

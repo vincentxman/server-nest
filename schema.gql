@@ -10,17 +10,20 @@ type Cat {
   breed: String
 }
 
-type Mutation {
-  createCat(newCatData: NewCatInput!): Cat!
-}
-
-input NewCatInput {
+input CatDto {
   name: String!
   age: Float!
   breed: String
 }
 
+type Mutation {
+  createCat(catDto: CatDto!): Cat!
+  updateCat(catDto: CatDto!, id: String!): Cat!
+  deleteCat(id: String!): Cat!
+}
+
 type Query {
   hello: String!
   cats: [Cat!]!
+  cat(id: String!): Cat!
 }
