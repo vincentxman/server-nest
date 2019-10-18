@@ -8,7 +8,6 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { GrQlModule } from './gr-ql/gr-ql.module';
 import { GrCatsModule } from './gr-cats/gr-cats.module';
 import config from './config/keys';
-import { join } from 'path';
 
 @Module({
   imports: [
@@ -17,8 +16,7 @@ import { join } from 'path';
       debug: true,
       playground: true,
       installSubscriptionHandlers: true,
-      // typePaths: ['./**/*.graphql'],
-      // autoSchemaFile: 'schema.gql', // npm i type-graphql
+      autoSchemaFile: 'schema.gql',
     }),
 
     ItemsModule,

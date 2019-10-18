@@ -1,7 +1,18 @@
-import { Min } from 'class-validator';
-import { CreateCatInput } from 'src/graphql.schema';
 
-export class CreateCatDto extends CreateCatInput {
-    @Min(1)
+import { IsOptional, Length, MaxLength, Min } from 'class-validator';
+import { Field, InputType } from 'type-graphql';
+
+@InputType()
+export class NewCatInput {
+    @Field()
+    name: string;
+
+    @Field()
+    @Min(0)
     age: number;
+
+    @Field({ nullable: true })
+    @IsOptional()
+    @Length(0, 255)
+    breed: string;
 }
