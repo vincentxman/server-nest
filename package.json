@@ -9,8 +9,8 @@
     "1-build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "nest start --watch",
-    "0-start:debug": "nest start --debug --watch",
+    "01-start:dev": "nest start --watch",
+    "00-start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "jest",
@@ -18,7 +18,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "2-gulp_ftp": "gulp server2Ftp"
+    "2-gulp_ftp": "gulp server2Ftp",
+    "02-gen-graphql.schema": "ts-node src/generate-typings"
   },
   "dependencies": {
     "@nestjs/common": "^6.7.2",
@@ -29,6 +30,7 @@
     "apollo-server-express": "^2.9.6",
     "graphql": "^14.5.8",
     "graphql-tag-pluck": "^0.8.3",
+    "graphql-tools": "^4.0.5",
     "mongoose": "^5.7.4",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
@@ -55,6 +57,7 @@
     "ts-node": "^8.4.1",
     "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.0",
+    "type-graphql": "^0.17.5",
     "typescript": "^3.6.3"
   },
   "jest": {

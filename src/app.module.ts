@@ -6,20 +6,24 @@ import { ItemsModule } from './items/items.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { GraphQLModule } from '@nestjs/graphql';
 import { GrQlModule } from './gr-ql/gr-ql.module';
+import { GrCatsModule } from './gr-cats/gr-cats.module';
 import config from './config/keys';
+import { join } from 'path';
 
 @Module({
   imports: [
     MongooseModule.forRoot(config.mongoURI, config.mongoOpts),
-    // GraphQLModule.forRoot(config.graphOpts),
     GraphQLModule.forRoot({
       debug: true,
       playground: true,
-      autoSchemaFile: 'schema.gql',
+      installSubscriptionHandlers: true,
+      // typePaths: ['./**/*.graphql'],
+      // autoSchemaFile: 'schema.gql', // npm i type-graphql
     }),
 
     ItemsModule,
     GrQlModule,
+    GrCatsModule,
   ],
   controllers: [
     AppController,
