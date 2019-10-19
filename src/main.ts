@@ -12,7 +12,7 @@ async function bootstrap() {
     // { maxAge: '1d', extensions: ['jpg', 'jpeg', 'png', 'gif'] },
   ));
 
-  await app.startAllMicroservicesAsync();
+  // await app.startAllMicroservicesAsync();
   await app.listen(config.port);
 
 }

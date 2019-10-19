@@ -8,7 +8,10 @@
         "**/*.bak": true,
         "**/*.spec.ts": false,
         "node_modules": true,
-        "**/*.lnk": true        
+        "**/*.lnk": true,
+        "dist": true,
+        ".vscode": true,
+        "test": true
     },
     "explorerExclude.backup": null,
     "debug.node.autoAttach": "on"

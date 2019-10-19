@@ -27,6 +27,7 @@
     "@nestjs/graphql": "^6.5.3",
     "@nestjs/mongoose": "^6.1.2",
     "@nestjs/platform-express": "^6.7.2",
+    "@nestjs/serve-static": "github:nestjs/serve-static",
     "apollo-server-express": "^2.9.6",
     "graphql": "^14.5.8",
     "graphql-tag-pluck": "^0.8.3",

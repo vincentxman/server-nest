@@ -9,45 +9,49 @@ const pubSub = new PubSub();
 
 @Resolver(of => Cat)
 export class GrCatsResolver {
-    constructor(private readonly catsService: CatsService) { }
+  constructor(private readonly catsService: CatsService) { }
 
-    @Query(returns => [Cat])
-    async cats(): Promise<Cat[]> {
-        return this.catsService.findAll();
-    }
+  @Query(returns => [Cat])
+  async cats(): Promise<Cat[]> {
+    return this.catsService.findAll();
+  }
 
-    @Query(returns => Cat)
-    async cat(@Args('id') id: string): Promise<Cat> {
-        const cat = await this.catsService.findOneById(id);
-        if (!cat) {
-            throw new NotFoundException(id);
-        }
-        return cat;
+  @Query(returns => Cat)
+  async cat(@Args('id') id: string): Promise<Cat> {
+    const cat = await this.catsService.findOneById(id);
+    if (!cat) {
+      throw new NotFoundException(id);
     }
+    return cat;
+  }
 
-    @Mutation(returns => Cat)
-    async createCat(
-        @Args('catDto') catDto: CatDto,
-    ): Promise<Cat> {
-        const cat = await this.catsService.create(catDto);
-        pubSub.publish('catAdded', { catAdded: Cat });
-        return cat;
-    }
+  @Mutation(returns => Cat)
+  async createCat(
+    @Args('catDto') catDto: CatDto,
+  ): Promise<Cat> {
+    const cat = await this.catsService.create(catDto);
+    pubSub.publish('catAdded', { catAdded: Cat });
+    return cat;
+  }
 
-    @Mutation(returns => Cat)
-    async updateCat(
-        @Args('id') id: string,
-        @Args('catDto') catDto: CatDto,
-    ): Promise<Cat> {
-        const cat = await this.catsService.update(id, catDto);
-        pubSub.publish('catAdded', { catAdded: Cat });
-        return cat;
-    }
+  @Mutation(returns => Cat)
+  async updateCat(
+    @Args('id') id: string,
+    @Args('catDto') catDto: CatDto,
+  ): Promise<Cat> {
+    const cat = await this.catsService.update(id, catDto);
+    return cat;
+  }
 
-    @Mutation(returns => Cat)
-    async deleteCat(@Args('id') id: string): Promise<Cat> {
-        return this.catsService.delete(id);
-    }
+  @Mutation(returns => Cat)
+  async deleteCat(@Args('id') id: string): Promise<Cat> {
+    return this.catsService.delete(id);
+  }
+
+  @Subscription(returns => Cat)
+  catAdded() {
+    return pubSub.asyncIterator('catAdded');
+  }
 }
 
 /*

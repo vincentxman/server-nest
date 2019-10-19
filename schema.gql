@@ -27,3 +27,7 @@ type Query {
   cats: [Cat!]!
   cat(id: String!): Cat!
 }
+
+type Subscription {
+  catAdded: Cat!
+}
