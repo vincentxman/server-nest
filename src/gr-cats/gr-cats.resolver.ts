@@ -3,9 +3,9 @@ import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { CatsService } from './cats.service';
 import { Cat } from './models/cat';
 import { CatDto } from './dto/cat.dto';
-// import { PubSub } from 'apollo-server-express';
+import { PubSub } from 'apollo-server-express';
 
-// const pubSub = new PubSub();
+const pubSub = new PubSub();
 
 @Resolver(of => Cat)
 export class GrCatsResolver {
@@ -30,7 +30,7 @@ export class GrCatsResolver {
         @Args('catDto') catDto: CatDto,
     ): Promise<Cat> {
         const cat = await this.catsService.create(catDto);
-        // pubSub.publish('catAdded', { catAdded: Cat });
+        pubSub.publish('catAdded', { catAdded: Cat });
         return cat;
     }
 
@@ -40,7 +40,7 @@ export class GrCatsResolver {
         @Args('catDto') catDto: CatDto,
     ): Promise<Cat> {
         const cat = await this.catsService.update(id, catDto);
-        // pubSub.publish('catAdded', { catAdded: Cat });
+        pubSub.publish('catAdded', { catAdded: Cat });
         return cat;
     }
 

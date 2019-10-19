@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    // "lib": ["es2016", "esnext.asynciterable"],
+    "lib": ["esnext.asynciterable"],
     "declaration": true,
-    // "esModuleInterop": true,
+    "esModuleInterop": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

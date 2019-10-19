@@ -1,13 +1,13 @@
 
 import { IsOptional, Length, MaxLength, Min } from 'class-validator';
-import { Field, InputType } from 'type-graphql';
+import { Field, InputType, Int } from 'type-graphql';
 
 @InputType()
 export class CatDto {
     @Field()
     name: string;
 
-    @Field()
+    @Field(type => Int)
     @Min(0)
     age: number;
 

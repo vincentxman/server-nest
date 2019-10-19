@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from 'type-graphql';
+import { Field, ID, ObjectType, Int } from 'type-graphql';
 import { Min } from 'class-validator';
 
 @ObjectType()
@@ -9,7 +9,7 @@ export class Cat {
     @Field()
     name: string;
 
-    @Field()
+    @Field(type => Int)
     @Min(0)
     age: number;
 

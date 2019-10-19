@@ -6,13 +6,13 @@
 type Cat {
   id: ID!
   name: String!
-  age: Float!
+  age: Int!
   breed: String
 }
 
 input CatDto {
   name: String!
-  age: Float!
+  age: Int!
   breed: String
 }
 
