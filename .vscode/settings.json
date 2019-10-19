@@ -6,12 +6,13 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/*.bak": true,
-        "**/*.spec.ts": false,
+        "**/*.spec.ts": true,
         "node_modules": true,
         "**/*.lnk": true,
         "dist": true,
         ".vscode": true,
-        "test": true
+        "test": true,
+        "**/app.controller.spec.ts": true
     },
     "explorerExclude.backup": null,
     "debug.node.autoAttach": "on"

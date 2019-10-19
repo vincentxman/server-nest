@@ -3,31 +3,6 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-type Cat {
-  id: ID!
-  name: String!
-  age: Int!
-  breed: String
-}
-
-input CatDto {
-  name: String!
-  age: Int!
-  breed: String
-}
-
-type Mutation {
-  createCat(catDto: CatDto!): Cat!
-  updateCat(catDto: CatDto!, id: String!): Cat!
-  deleteCat(id: String!): Cat!
-}
-
 type Query {
   hello: String!
-  cats: [Cat!]!
-  cat(id: String!): Cat!
-}
-
-type Subscription {
-  catAdded: Cat!
 }

@@ -5,10 +5,13 @@ export default {
         promiseLibrary: require('bluebird'),
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        useFindAndModify: false,
+        useCreateIndex: true,
     },
     graphOpts: {
         debug: true,
         playground: true,
+        installSubscriptionHandlers: true,
         autoSchemaFile: 'schema.gql',
     },
 };
