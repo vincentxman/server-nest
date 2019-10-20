@@ -3,6 +3,8 @@ import { AppModule } from './app.module';
 import * as path from 'path';
 import config from './config/keys';
 import serveStatic = require('serve-static');
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { INestApplication } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -11,8 +13,36 @@ async function bootstrap() {
     // { maxAge: '1d', extensions: ['jpg', 'jpeg', 'png', 'gif'] },
   ));
 
-  // await app.startAllMicroservicesAsync();
+  doSwagger(app, '/api/docs');
+
+  // app.setGlobalPrefix('api');
   await app.listen(config.port);
 
 }
 bootstrap();
+
+function doSwagger(app: INestApplication, prefix: string): void {
+  if (!config.useSwagger) {
+    return;
+  }
+  const swaggerOptions = new DocumentBuilder()
+    .setTitle('Nest MEAN')
+    .setDescription('API Documentation')
+    .setVersion('1.0.0')
+    .setHost(config.host.split('//')[1] + ':' + config.port)
+    .setSchemes('http')
+    .setBasePath('/')
+    .addBearerAuth('Authorization', 'header')
+    .build();
+  const swaggerDoc = SwaggerModule.createDocument(app, swaggerOptions);
+
+  SwaggerModule.setup(prefix, app, swaggerDoc, {
+    swaggerUrl: `${config.host}${prefix}-json`,
+    explorer: true,
+    swaggerOptions: {
+      docExpansion: 'list',
+      filter: true,
+      showRequestDuration: true,
+    },
+  });
+}

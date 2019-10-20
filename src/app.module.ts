@@ -5,7 +5,6 @@ import { TstController } from './tst/tst.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { GraphQLModule } from '@nestjs/graphql';
 import { GrQlModule } from './gr-ql/gr-ql.module';
-import { SharedModule } from './shared/shared.module';
 import config from './config/keys';
 
 // import { ItemsModule } from './items/items.module';
@@ -19,7 +18,6 @@ import config from './config/keys';
     // GrCatsModule,
     // ItemsModule,
     GrQlModule,
-    SharedModule,
   ],
   controllers: [
     AppController,

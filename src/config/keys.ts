@@ -1,4 +1,5 @@
 export default {
+    host: 'http://localhost',
     port: 8000,
     mongoURI: 'mongodb://testAdmin:testAdmin12345@localhost:37018/test',
     mongoOpts: {
@@ -9,12 +10,14 @@ export default {
         useCreateIndex: true,
     },
     graphOpts: {
-        debug: true,
-        playground: true,
+        debug: (process.env.NODE_ENV === 'development') ? true : false,
+        playground: (process.env.NODE_ENV === 'development') ? true : false,
         installSubscriptionHandlers: true,
         autoSchemaFile: 'schema.gql',
     },
+    useSwagger: (process.env.NODE_ENV === 'development') ? true : false,
 };
+
 // 服务启动 port改成 “--port 37018”， 需要验证密码 “--auth”
 // D:\MongoDB\Server\4.3\bin\mongod.exe --auth --service --port 37018 --dbpath D:\MongoDB\data --logpath=D:\MongoDB\logs\mongodb.log  --logappend
 
