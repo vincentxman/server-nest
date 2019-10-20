@@ -5,17 +5,21 @@ import config from './config/keys';
 import serveStatic = require('serve-static');
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { INestApplication } from '@nestjs/common';
+import { HttpExceptionFilter } from './shared/filters/http-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.use('/', serveStatic(path.join(__dirname, '../../client-ng8/dist/audioprint'),
+  app.use('/',
+    serveStatic(path.join(__dirname, '../../client-ng8/dist/audioprint'),
     // { maxAge: '1d', extensions: ['jpg', 'jpeg', 'png', 'gif'] },
   ));
 
   doSwagger(app, '/api/docs');
 
   // app.setGlobalPrefix('api');
+  app.useGlobalFilters(new HttpExceptionFilter());
+
   await app.listen(config.port);
 
 }
@@ -26,9 +30,9 @@ function doSwagger(app: INestApplication, prefix: string): void {
     return;
   }
   const swaggerOptions = new DocumentBuilder()
-    .setTitle('Nest MEAN')
+    .setTitle('AudioPrint')
     .setDescription('API Documentation')
-    .setVersion('1.0.0')
+    .setVersion(config.version)
     .setHost(config.host.split('//')[1] + ':' + config.port)
     .setSchemes('http')
     .setBasePath('/')

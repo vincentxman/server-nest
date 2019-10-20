@@ -1,6 +1,7 @@
 export default {
     host: 'http://localhost',
     port: 8000,
+    version: '1.0.0',
     mongoURI: 'mongodb://testAdmin:testAdmin12345@localhost:37018/test',
     mongoOpts: {
         promiseLibrary: require('bluebird'),
@@ -16,6 +17,7 @@ export default {
         autoSchemaFile: 'schema.gql',
     },
     useSwagger: (process.env.NODE_ENV === 'development') ? true : false,
+    JWT_KEY: '!2342@#61@Dasf%234',
 };
 
 // 服务启动 port改成 “--port 37018”， 需要验证密码 “--auth”
