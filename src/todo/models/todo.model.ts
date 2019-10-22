@@ -1,4 +1,4 @@
-import { InstanceType, ModelType, prop } from 'typegoose';
+import { InstanceType, ModelType, prop } from '@hasezoey/typegoose';
 import { BaseModel, schemaOptions } from '../../shared/base.model';
 import { TodoLevel } from './todo-level.enum';
 import { Expose } from 'class-transformer';

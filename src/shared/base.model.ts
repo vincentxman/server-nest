@@ -1,6 +1,6 @@
 import { ApiModelPropertyOptional } from '@nestjs/swagger';
 import { SchemaOptions } from 'mongoose';
-import { Typegoose, prop } from 'typegoose';
+import { Typegoose, prop } from '@hasezoey/typegoose';
 import { Expose } from 'class-transformer';
 
 export class BaseModelVm {

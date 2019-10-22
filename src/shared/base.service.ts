@@ -1,5 +1,5 @@
 import { Types } from 'mongoose';
-import { InstanceType, ModelType, Typegoose } from 'typegoose';
+import { InstanceType, ModelType, Typegoose } from '@hasezoey/typegoose';
 import { AutoMapper, Constructable } from 'automapper-nartc';
 
 export abstract class BaseService<T extends Typegoose> {
