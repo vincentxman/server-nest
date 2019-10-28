@@ -24,10 +24,12 @@ type Mutation {
 
 type Query {
   hello: String!
-  cats: [Cat!]!
+  cats(limit: Int = 10): [Cat!]!
   cat(id: String!): Cat!
 }
 
 type Subscription {
   catAdded: Cat!
+  catUpdated: Cat!
+  catDeleted: Cat!
 }

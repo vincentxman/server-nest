@@ -19,8 +19,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "2-gulp_ftp": "gulp server2Ftp",
-    "gen-graphql.schema": "ts-node src/generate-typings",
-    "gen": "gql-gen --schema http://localhost:8000/graphql --template graphql-codegen-typescript-template --out ./typings/ \"./src/**/*.graphql\""
+    "gen-graphql.schema": "ts-node src/generate-typings"
   },
   "dependencies": {
     "@hasezoey/typegoose": "^5.9.2",
