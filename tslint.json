@@ -16,7 +16,9 @@
     "variable-name": [false],
     "no-string-literal": false,
     "max-classes-per-file": false,
-    "array-type": false
+    "array-type": false,
+    "eofline": false,
+    "no-consecutive-blank-lines": false
   },
   "rulesDirectory": []
 }

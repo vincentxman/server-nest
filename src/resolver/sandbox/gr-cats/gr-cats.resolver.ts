@@ -5,6 +5,8 @@ import { Cat } from './models/cat';
 import { CatDto } from './dto/cat.dto';
 import { PubSub } from 'apollo-server-express';
 import { Int } from 'type-graphql';
+import { sleep } from '../../../shared/utilities/tools';
+
 
 const pubSub = new PubSub();
 
@@ -52,8 +54,12 @@ export class GrCatsResolver {
     @Args('catDto') catDto: CatDto,
   ): Promise<Cat> {
     console.log(`...updateCat(${id})`);
+
+    // await sleep(3000);
+
     const cat = await this.catsService.update(id, catDto);
     pubSub.publish('catUpdated', { catUpdated: cat });
+    // console.log('return update');
     return cat;
   }
 
