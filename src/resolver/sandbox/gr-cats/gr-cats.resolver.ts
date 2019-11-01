@@ -37,7 +37,7 @@ export class GrCatsResolver {
   async createCat(
     @Args('catDto') catDto: CatDto,
   ): Promise<Cat> {
-    dump(`createCat(${catDto.name})`);
+    dump(catDto, `createCat`);
     const cat = await this.catsService.create(catDto);
     pubSub.publish('catAdded', { catAdded: cat });
     return cat;
