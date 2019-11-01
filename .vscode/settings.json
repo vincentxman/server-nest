@@ -10,10 +10,12 @@
         "node_modules": true,
         "**/*.lnk": true,
         "dist": true,
-        ".vscode": true,
+        ".vscode": false,
         "test": true,
         "**/app.controller.spec.ts": true
     },
     "explorerExclude.backup": null,
-    "debug.node.autoAttach": "on"
+    "debug.node.autoAttach": "on",
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "javascript.preferences.importModuleSpecifier": "relative"
 }

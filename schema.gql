@@ -24,7 +24,7 @@ type Mutation {
 
 type Query {
   hello: String!
-  cats(limit: Int = 10): [Cat!]!
+  cats(limit: Int = 10, offset: Int = 0): [Cat!]!
   cat(id: String!): Cat!
 }
 

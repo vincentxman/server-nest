@@ -5,8 +5,7 @@ import { Cat } from './models/cat';
 import { CatDto } from './dto/cat.dto';
 import { PubSub } from 'apollo-server-express';
 import { Int } from 'type-graphql';
-import { sleep } from '../../../shared/utilities/tools';
-
+import { dump } from '../../../shared/utilities/tools';
 
 const pubSub = new PubSub();
 
@@ -15,9 +14,11 @@ export class GrCatsResolver {
   constructor(private readonly catsService: CatsService) { }
 
   @Query(returns => [Cat])
-  async cats(@Args({ name: 'limit', type: () => Int, defaultValue: 10 }) limit: number): Promise<Cat[]> {
-    console.log(`...cats(${limit})`);
-
+  async cats(
+      @Args({ name: 'offset', type: () => Int, defaultValue: 0 }) offset: number,
+      @Args({ name: 'limit', type: () => Int, defaultValue: 10 }) limit: number,
+    ): Promise<Cat[]> {
+    console.log(`...cats(${offset}, ${limit})`);
     return this.catsService.findAll();
   }
 
@@ -54,9 +55,7 @@ export class GrCatsResolver {
     @Args('catDto') catDto: CatDto,
   ): Promise<Cat> {
     console.log(`...updateCat(${id})`);
-
     // await sleep(3000);
-
     const cat = await this.catsService.update(id, catDto);
     pubSub.publish('catUpdated', { catUpdated: cat });
     // console.log('return update');
@@ -65,8 +64,14 @@ export class GrCatsResolver {
 
   @Subscription(returns => Cat)
   catUpdated() {
-    console.log(`subscription...catUpdated()`);
+    dump(`subscription...catUpdated()`);
     return pubSub.asyncIterator('catUpdated');
+    // return {
+    //   subscribe: () => {
+    //     console.log(`subscription...catUpdated()`);
+    //     pubSub.asyncIterator('catUpdated');
+    //   },
+    // };
   }
 
 
