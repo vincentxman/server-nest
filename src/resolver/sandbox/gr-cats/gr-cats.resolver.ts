@@ -18,13 +18,13 @@ export class GrCatsResolver {
       @Args({ name: 'offset', type: () => Int, defaultValue: 0 }) offset: number,
       @Args({ name: 'limit', type: () => Int, defaultValue: 10 }) limit: number,
     ): Promise<Cat[]> {
-    console.log(`...cats(${offset}, ${limit})`);
+    dump(`cats(${offset}, ${limit})`);
     return this.catsService.findAll();
   }
 
   @Query(returns => Cat)
   async cat(@Args('id') id: string): Promise<Cat> {
-    console.log(`...cat(${id})`);
+    dump(`cat(${id})`);
 
     const cat = await this.catsService.findOneById(id);
     if (!cat) {
@@ -37,7 +37,7 @@ export class GrCatsResolver {
   async createCat(
     @Args('catDto') catDto: CatDto,
   ): Promise<Cat> {
-    console.log(`...createCat(${catDto.name})`);
+    dump(`createCat(${catDto.name})`);
     const cat = await this.catsService.create(catDto);
     pubSub.publish('catAdded', { catAdded: cat });
     return cat;
@@ -45,7 +45,7 @@ export class GrCatsResolver {
 
   @Subscription(returns => Cat)
   catAdded() {
-    console.log(`subscription...catAdded()`);
+    dump(`subscription...catAdded()`);
     return pubSub.asyncIterator('catAdded');
   }
 
@@ -54,11 +54,11 @@ export class GrCatsResolver {
     @Args('id') id: string,
     @Args('catDto') catDto: CatDto,
   ): Promise<Cat> {
-    console.log(`...updateCat(${id})`);
+    dump(`updateCat(${id})`);
     // await sleep(3000);
     const cat = await this.catsService.update(id, catDto);
     pubSub.publish('catUpdated', { catUpdated: cat });
-    // console.log('return update');
+    // dump('return update');
     return cat;
   }
 
@@ -68,7 +68,7 @@ export class GrCatsResolver {
     return pubSub.asyncIterator('catUpdated');
     // return {
     //   subscribe: () => {
-    //     console.log(`subscription...catUpdated()`);
+    //     dump(`subscription...catUpdated()`);
     //     pubSub.asyncIterator('catUpdated');
     //   },
     // };
@@ -77,7 +77,7 @@ export class GrCatsResolver {
 
   @Mutation(returns => Cat)
   async deleteCat(@Args('id') id: string): Promise<Cat> {
-    console.log(`...deleteCat(${id})`);
+    dump(`deleteCat(${id})`);
     const cat = this.catsService.delete(id);
     pubSub.publish('catDeleted', { catDeleted: cat });
     return cat;
@@ -85,7 +85,7 @@ export class GrCatsResolver {
 
   @Subscription(returns => Cat)
   catDeleted() {
-    console.log(`subscription...catDeleted()`);
+    dump(`subscription...catDeleted()`);
     return pubSub.asyncIterator('catDeleted');
   }
 }

@@ -1,10 +1,15 @@
-export function sleep(ms: number) {
-    console.log(`延迟${ms}ms`);
+import keys from "../../config/keys";
 
-    return new Promise(resolve => setTimeout(resolve, ms));
+const isProd = keys.isProd;
+
+export function sleep(ms: number) {
+  if (isProd) { return; }
+  console.log(`延迟${ms}ms`);
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 export function dump(obj: any, title: string = '', json: boolean = true) {
-    const sObj = json ? JSON.stringify(obj) : obj;
-    console.log('>' + sObj + '..........' + title);
+  if (isProd) { return; }
+  const sObj = json ? JSON.stringify(obj) : obj;
+  console.log('>' + sObj + '..........' + title);
 }

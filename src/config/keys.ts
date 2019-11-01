@@ -3,6 +3,7 @@ export default {
     port: 8000,
     version: '1.0.0',
     mongoURI: 'mongodb://testAdmin:testAdmin12345@localhost:37018/test',
+    isProd: (process.env.NODE_ENV !== 'development'),
     mongoOpts: {
         promiseLibrary: require('bluebird'),
         useNewUrlParser: true,
