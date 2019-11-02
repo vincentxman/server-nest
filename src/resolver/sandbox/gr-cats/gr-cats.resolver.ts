@@ -5,7 +5,7 @@ import { Cat } from './models/cat';
 import { CatDto } from './dto/cat.dto';
 import { PubSub } from 'apollo-server-express';
 import { Int } from 'type-graphql';
-import { dump } from '../../../shared/utilities/tools';
+import { dump, sleep } from '../../../shared/utilities/tools';
 
 const pubSub = new PubSub();
 
@@ -15,17 +15,18 @@ export class GrCatsResolver {
 
   @Query(returns => [Cat])
   async cats(
-      @Args({ name: 'offset', type: () => Int, defaultValue: 0 }) offset: number,
-      @Args({ name: 'limit', type: () => Int, defaultValue: 10 }) limit: number,
-    ): Promise<Cat[]> {
+    @Args({ name: 'offset', type: () => Int, defaultValue: 0 }) offset: number,
+    @Args({ name: 'limit', type: () => Int, defaultValue: 10 }) limit: number,
+  ): Promise<Cat[]> {
+    await sleep(500);
     dump(`cats(${offset}, ${limit})`);
     return this.catsService.findAll();
   }
 
   @Query(returns => Cat)
   async cat(@Args('id') id: string): Promise<Cat> {
+    await sleep(500);
     dump(`cat(${id})`);
-
     const cat = await this.catsService.findOneById(id);
     if (!cat) {
       throw new NotFoundException(id);

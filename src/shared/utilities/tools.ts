@@ -2,6 +2,7 @@ import keys from "../../config/keys";
 
 const isProd = keys.isProd;
 
+// eg. await sleep(3000);
 export function sleep(ms: number) {
   if (isProd) { return; }
   console.log(`延迟${ms}ms`);
