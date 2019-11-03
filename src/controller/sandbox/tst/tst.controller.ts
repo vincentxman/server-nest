@@ -1,8 +1,9 @@
-import { Controller, Get, Req, Res, HttpCode, Post } from '@nestjs/common';
+import { Controller, Get, Req, Res, HttpCode, Post, HttpException, HttpStatus, ForbiddenException, UnauthorizedException } from '@nestjs/common';
 import { Request, Response } from 'express';
 
 import { products, Product } from './mockdata/products';
 import { heroes, Hero } from './mockdata/heroes';
+import { dump } from '../../../shared/utilities/tools';
 
 @Controller('tst')
 export class TstController {
@@ -22,6 +23,16 @@ export class TstController {
     getHeroes(@Res() res: Response): Hero[] {
         res.send(heroes);
         return heroes;
+    }
+
+    @Get('excep')
+    getExcep(@Res() res: Response): Product[] {
+        // throw new ForbiddenException('My forbidden message');
+        // throw new HttpException('MyForbiddens messages....', HttpStatus.FORBIDDEN);
+        // throw new HttpException('未授权使用', HttpStatus.UNAUTHORIZED);
+        throw new UnauthorizedException();
+        // res.send(products);
+        // return products;
     }
 
     @Post()

@@ -2,6 +2,7 @@ import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus } from
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
+
     catch(error: any, host: ArgumentsHost) {
         const ctx = host.switchToHttp();
         const res = ctx.getResponse();
@@ -10,7 +11,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
         if (error.getStatus() === HttpStatus.UNAUTHORIZED) {
             if (typeof error.response !== 'string') {
                 error.response['message'] =
-                    error.response.message || 'You do not have permission to access this resource';
+                    error.response.message || '您没权限使用本资源！';
             }
         }
 
