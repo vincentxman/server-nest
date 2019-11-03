@@ -1,4 +1,4 @@
-import { NotFoundException } from '@nestjs/common';
+import { NotFoundException, UsePipes } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { CatsService } from './cats.service';
 import { Cat } from './models/cat';
@@ -7,6 +7,7 @@ import { PubSub } from 'apollo-server-express';
 import { Int } from 'type-graphql';
 import { dump, sleep } from '../../../shared/utilities/tools';
 import { FindOption } from '../../../shared/utilities/pagination';
+import { TestPipe } from '../../../controller/sandbox/tems/validation.pipe';
 
 const pubSub = new PubSub();
 
@@ -44,6 +45,7 @@ export class GrCatsResolver {
   }
 
   @Mutation(returns => Cat)
+  @UsePipes(TestPipe)
   async createCat(
     @Args('catDto') catDto: CatDto,
   ): Promise<Cat> {
