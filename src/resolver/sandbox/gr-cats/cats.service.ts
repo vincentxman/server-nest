@@ -1,20 +1,30 @@
+import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { CatDto } from './dto/cat.dto';
 import { Cat } from './models/cat';
+import { CatDto } from './dto/cat.dto';
+import { FindOption } from '../../../shared/utilities/pagination';
 
 @Injectable()
 export class CatsService {
     constructor(@InjectModel('Cat') private readonly catModel: Model<Cat>) { }
 
-    async create(data: CatDto): Promise<Cat> {
-        const createdCat = new this.catModel(data);
+    async create(cat: CatDto): Promise<Cat> {
+        const createdCat = new this.catModel(cat);
         return await createdCat.save();
+        // return await this.catModel.insertMany(cat);
     }
 
-    async findAll(): Promise<Cat[]> {
-        return await this.catModel.find();
+    async findAll(option: FindOption): Promise<Cat[]> {
+        const pg = option.pagination;
+        return await this.catModel.find(
+            option.filter,
+            option.sort,
+            {
+                skip: pg.skip,
+                limit: pg.limit,
+            }
+        );
     }
 
     async findOneById(id: string): Promise<Cat> {

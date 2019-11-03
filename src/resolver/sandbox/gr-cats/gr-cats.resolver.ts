@@ -6,6 +6,7 @@ import { CatDto } from './dto/cat.dto';
 import { PubSub } from 'apollo-server-express';
 import { Int } from 'type-graphql';
 import { dump, sleep } from '../../../shared/utilities/tools';
+import { FindOption } from '../../../shared/utilities/pagination';
 
 const pubSub = new PubSub();
 
@@ -15,12 +16,20 @@ export class GrCatsResolver {
 
   @Query(returns => [Cat])
   async cats(
-    @Args({ name: 'offset', type: () => Int, defaultValue: 0 }) offset: number,
+    @Args({ name: 'skip', type: () => Int, defaultValue: 0 }) skip: number,
     @Args({ name: 'limit', type: () => Int, defaultValue: 10 }) limit: number,
   ): Promise<Cat[]> {
     await sleep(500);
-    dump(`cats(${offset}, ${limit})`);
-    return this.catsService.findAll();
+    dump(`cats(${skip}, ${limit})`);
+    const option: FindOption = {
+      filter: {},
+      sort: {},
+      pagination: {
+        skip,
+        limit,
+      }
+    };
+    return this.catsService.findAll(option);
   }
 
   @Query(returns => Cat)

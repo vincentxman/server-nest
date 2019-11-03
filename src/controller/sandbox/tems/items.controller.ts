@@ -14,13 +14,13 @@ export class ItemsController {
     }
 
     @Get()
-    async readAll(): Promise<Item[]> {
-        return this.itemsService.readAll();
+    async findAll(): Promise<Item[]> {
+        return this.itemsService.findAll();
     }
 
     @Get(':id')
-    async readOne(@Param('id') id): Promise<Item> {
-        return this.itemsService.readOne(id);
+    async findOne(@Param('id') id): Promise<Item> {
+        return this.itemsService.findOne(id);
     }
 
     @Put(':id')

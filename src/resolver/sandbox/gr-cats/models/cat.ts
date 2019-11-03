@@ -6,6 +6,9 @@ export class Cat {
     @Field(type => ID)
     id: string;
 
+    // @Field(() => DateScalar)
+    // creationDate: Date;
+
     @Field()
     name: string;
 

@@ -9,11 +9,11 @@ import { Item } from './interfaces/item.interface';
 export class ItemsService {
     constructor(@InjectModel('Item') private readonly itemModel: Model<Item>) { }
 
-    async readAll(): Promise<Item[]> {
+    async findAll(): Promise<Item[]> {
         return await this.itemModel.find();
     }
 
-    async readOne(id: string): Promise<Item> {
+    async findOne(id: string): Promise<Item> {
         return await this.itemModel.findOne({ _id: id });
     }
 
