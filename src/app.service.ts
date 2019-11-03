@@ -3,7 +3,7 @@ import config from './config/keys';
 
 @Injectable()
 export class AppService {
-  root(): string {
+  sayHello(): string {
     const sConfig = JSON.stringify(config, null, '\t'); // config.mongoOpts);
     return `
     <h1>Hello World!</h1>
