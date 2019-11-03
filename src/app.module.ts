@@ -1,7 +1,6 @@
-import { Module } from '@nestjs/common';
+import { Module, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TstController } from './controller/sandbox/tst/tst.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { GraphQLModule } from '@nestjs/graphql';
 import { GrQlModule } from './resolver/sandbox/gr-ql/gr-ql.module';
@@ -12,6 +11,10 @@ import { TodoModule } from './todo/todo.module';
 
 import { ItemsModule } from './controller/sandbox/tems/items.module';
 import { GrCatsModule } from './resolver/sandbox/gr-cats/gr-cats.module';
+import { LoggerMiddleware } from './middleware/logger.middleware';
+import { TstController } from './controller/sandbox/tst/tst.controller';
+
+
 
 @Module({
   imports: [
@@ -33,4 +36,10 @@ import { GrCatsModule } from './resolver/sandbox/gr-cats/gr-cats.module';
     AppService,
   ],
 })
-export class AppModule { }
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes({ path: 'graph*', method: RequestMethod.ALL });
+  }
+}
