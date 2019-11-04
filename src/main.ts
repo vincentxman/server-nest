@@ -6,6 +6,8 @@ import serveStatic = require('serve-static');
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { INestApplication } from '@nestjs/common';
 import { HttpExceptionFilter } from './_shared/filters/http-exception.filter';
+// import { LoggingInterceptor } from './_shared/interceptors/logging.interceptor';
+// import { RolesGuard } from './_shared/guards/roles.guard';
 // import { TestPipe } from './controller/sandbox/tems/validation.pipe';
 
 async function bootstrap() {
@@ -20,7 +22,9 @@ async function bootstrap() {
 
   // app.setGlobalPrefix('api');
   app.useGlobalFilters(new HttpExceptionFilter());
+  // app.useGlobalGuards(new RolesGuard());
   // app.useGlobalPipes(new TestPipe()); // 全局管道
+  // app.useGlobalInterceptors(new LoggingInterceptor());
   await app.listen(config.port);
 
 }

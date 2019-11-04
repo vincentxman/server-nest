@@ -1,4 +1,4 @@
-import { NotFoundException, UsePipes } from '@nestjs/common';
+import { NotFoundException, UsePipes, UseInterceptors } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { CatsService } from './cats.service';
 import { Cat } from './models/cat';
@@ -62,6 +62,7 @@ export class GrCatsResolver {
   }
 
   @Mutation(returns => Cat)
+  // @UseInterceptors(LoggingInterceptor)
   async updateCat(
     @Args('id') id: string,
     @Args('catDto') catDto: CatDto,

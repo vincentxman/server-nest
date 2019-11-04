@@ -5,13 +5,13 @@ import { Item } from './interfaces/item.interface';
 import { TestPipe } from '../../../_shared/pipes/validation.pipe';
 
 @Controller('items')
-// @UsePipes(TestPipe)
+// @UsePipes(TestPipe) // 管道放这里整个类有效
 export class ItemsController {
     constructor(private readonly itemsService: ItemsService) { } s
     // CRUD Create/Read/Update/Delete
 
     @Post()
-    // @UsePipes(TestPipe)
+    // @UsePipes(TestPipe) // 管道放这里本函数所有参数有效
     async create( @Body(new TestPipe()) createItemDto: CreateItemDto): Promise<Item> {
         return this.itemsService.create(createItemDto);
     }

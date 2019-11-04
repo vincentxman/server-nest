@@ -11,8 +11,8 @@ import { TodoModule } from './controller/todo/todo.module';
 
 import { ItemsModule } from './controller/sandbox/tems/items.module';
 import { GrCatsModule } from './resolver/sandbox/gr-cats/gr-cats.module';
-import { LoggerMiddleware } from './_shared/middleware/logger.middleware';
 import { TstController } from './controller/sandbox/tst/tst.controller';
+import { ExerciseMiddleware } from './_shared/middleware/exercise.middleware';
 
 
 
@@ -39,7 +39,7 @@ import { TstController } from './controller/sandbox/tst/tst.controller';
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(LoggerMiddleware)
+      .apply(ExerciseMiddleware)
       .forRoutes({ path: 'graph*', method: RequestMethod.ALL });
   }
 }
