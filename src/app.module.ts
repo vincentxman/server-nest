@@ -4,7 +4,6 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { GraphQLModule } from '@nestjs/graphql';
 import keys from './_shared/_config/keys';
-import { SharedModule } from './_shared/shared.module';
 
 import { ItemsModule } from './controller/sandbox/tems/items.module';
 import { TstController } from './controller/sandbox/tst/tst.controller';
@@ -18,7 +17,7 @@ import { ResolverModule } from './resolver/resolver.module';
   imports: [
     MongooseModule.forRoot(keys.mongoURI, keys.mongoOpts),
     GraphQLModule.forRoot(keys.graphOpts),
-    SharedModule,
+    // SharedModule,
     PassportOldModule,
 
     ItemsModule,
