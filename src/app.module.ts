@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { GraphQLModule } from '@nestjs/graphql';
 import { GrQlModule } from './resolver/sandbox/gr-ql/gr-ql.module';
-import config from './_shared/_config/keys';
+import keys from './_shared/_config/keys';
 import { SharedModule } from './_shared/shared.module';
 import { UserModule } from './controller/user/user.module';
 import { TodoModule } from './controller/todo/todo.module';
@@ -18,8 +18,8 @@ import { ExerciseMiddleware } from './_shared/middleware/exercise.middleware';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(config.mongoURI, config.mongoOpts),
-    GraphQLModule.forRoot(config.graphOpts),
+    MongooseModule.forRoot(keys.mongoURI, keys.mongoOpts),
+    GraphQLModule.forRoot(keys.graphOpts),
     SharedModule,
     UserModule,
     TodoModule,

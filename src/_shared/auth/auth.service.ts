@@ -1,9 +1,9 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { sign, SignOptions } from 'jsonwebtoken';
+import { JwtPayload } from './jwt-payload.model';
 import { User } from '../../controller/user/models/user.model';
 import { UserService } from '../../controller/user/user.service';
-import { JwtPayload } from './jwt-payload.model';
-import config from '../_config/keys';
+import keys from '../_config/keys';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +15,7 @@ export class AuthService {
         readonly _userService: UserService,
     ) {
         this.jwtOptions = { expiresIn: '12h' };
-        this.jwtKey = config.JWT_KEY;
+        this.jwtKey = keys.JWT_KEY;
     }
 
     async signPayload(payload: JwtPayload): Promise<string> {

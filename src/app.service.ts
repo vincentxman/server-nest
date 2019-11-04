@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import config from './_shared/_config/keys';
+import keys from './_shared/_config/keys';
 
 @Injectable()
 export class AppService {
   sayHello(): string {
-    const sConfig = JSON.stringify(config, null, '\t'); // config.mongoOpts);
+    const sConfig = JSON.stringify(keys, null, '\t'); // config.mongoOpts);
     return `
     <h1>Hello World!</h1>
     <br>

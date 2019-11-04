@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as path from 'path';
-import config from './_shared/_config/keys';
+import keys from './_shared/_config/keys';
 import serveStatic = require('serve-static');
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { INestApplication } from '@nestjs/common';
@@ -25,20 +25,20 @@ async function bootstrap() {
   // app.useGlobalGuards(new RolesGuard());
   // app.useGlobalPipes(new TestPipe()); // 全局管道
   // app.useGlobalInterceptors(new LoggingInterceptor());
-  await app.listen(config.port);
+  await app.listen(keys.port);
 
 }
 bootstrap();
 
 function doSwagger(app: INestApplication, prefix: string): void {
-  if (!config.useSwagger) {
+  if (!keys.useSwagger) {
     return;
   }
   const swaggerOptions = new DocumentBuilder()
     .setTitle('AudioPrint')
     .setDescription('API Documentation')
-    .setVersion(config.version)
-    .setHost(config.host.split('//')[1] + ':' + config.port)
+    .setVersion(keys.version)
+    .setHost(keys.host.split('//')[1] + ':' + keys.port)
     .setSchemes('http')
     .setBasePath('/')
     .addBearerAuth('Authorization', 'header')
@@ -46,7 +46,7 @@ function doSwagger(app: INestApplication, prefix: string): void {
   const swaggerDoc = SwaggerModule.createDocument(app, swaggerOptions);
 
   SwaggerModule.setup(prefix, app, swaggerDoc, {
-    swaggerUrl: `${config.host}${prefix}-json`,
+    swaggerUrl: `${keys.host}${prefix}-json`,
     explorer: true,
     swaggerOptions: {
       docExpansion: 'list',
