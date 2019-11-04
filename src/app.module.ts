@@ -13,6 +13,7 @@ import { ItemsModule } from './controller/sandbox/tems/items.module';
 import { GrCatsModule } from './resolver/sandbox/gr-cats/gr-cats.module';
 import { TstController } from './controller/sandbox/tst/tst.controller';
 import { ExerciseMiddleware } from './_shared/middleware/exercise.middleware';
+import { PassportOldModule } from './passport-old/passport-old.module';
 
 
 
@@ -21,8 +22,7 @@ import { ExerciseMiddleware } from './_shared/middleware/exercise.middleware';
     MongooseModule.forRoot(keys.mongoURI, keys.mongoOpts),
     GraphQLModule.forRoot(keys.graphOpts),
     SharedModule,
-    UserModule,
-    TodoModule,
+    PassportOldModule,
 
     GrCatsModule,
     ItemsModule,
