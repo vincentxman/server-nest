@@ -5,9 +5,9 @@ import { Cat } from './models/cat';
 import { CatDto } from './dto/cat.dto';
 import { PubSub } from 'apollo-server-express';
 import { Int } from 'type-graphql';
-import { dump, sleep } from '../../../shared/utilities/tools';
-import { FindOption } from '../../../shared/utilities/pagination';
-import { TestPipe } from '../../../controller/sandbox/tems/validation.pipe';
+import { dump, sleep } from '../../../_shared/utilities/tools';
+import { FindOption } from '../../../_shared/utilities/pagination';
+import { TestPipe } from '../../../_shared/pipes/validation.pipe';
 
 const pubSub = new PubSub();
 

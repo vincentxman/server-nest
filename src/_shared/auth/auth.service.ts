@@ -3,7 +3,7 @@ import { sign, SignOptions } from 'jsonwebtoken';
 import { User } from '../../user/models/user.model';
 import { UserService } from '../../user/user.service';
 import { JwtPayload } from './jwt-payload.model';
-import config from '../../config/keys';
+import config from '../_config/keys';
 
 @Injectable()
 export class AuthService {

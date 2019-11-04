@@ -1,11 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as path from 'path';
-import config from './config/keys';
+import config from './_shared/_config/keys';
 import serveStatic = require('serve-static');
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { INestApplication } from '@nestjs/common';
-import { HttpExceptionFilter } from './shared/filters/http-exception.filter';
+import { HttpExceptionFilter } from './_shared/filters/http-exception.filter';
+// import { TestPipe } from './controller/sandbox/tems/validation.pipe';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,7 +20,7 @@ async function bootstrap() {
 
   // app.setGlobalPrefix('api');
   app.useGlobalFilters(new HttpExceptionFilter());
-
+  // app.useGlobalPipes(new TestPipe()); // 全局管道
   await app.listen(config.port);
 
 }

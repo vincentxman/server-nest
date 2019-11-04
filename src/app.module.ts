@@ -4,14 +4,14 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { GraphQLModule } from '@nestjs/graphql';
 import { GrQlModule } from './resolver/sandbox/gr-ql/gr-ql.module';
-import config from './config/keys';
-import { SharedModule } from './shared/shared.module';
+import config from './_shared/_config/keys';
+import { SharedModule } from './_shared/shared.module';
 import { UserModule } from './user/user.module';
 import { TodoModule } from './todo/todo.module';
 
 import { ItemsModule } from './controller/sandbox/tems/items.module';
 import { GrCatsModule } from './resolver/sandbox/gr-cats/gr-cats.module';
-import { LoggerMiddleware } from './middleware/logger.middleware';
+import { LoggerMiddleware } from './_shared/middleware/logger.middleware';
 import { TstController } from './controller/sandbox/tst/tst.controller';
 
 

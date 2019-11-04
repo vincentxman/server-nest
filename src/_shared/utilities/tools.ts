@@ -1,4 +1,4 @@
-import keys from "../../config/keys";
+import keys from "../_config/keys";
 
 const isProd = keys.isProd;
 

@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 
 import { products, Product } from './mockdata/products';
 import { heroes, Hero } from './mockdata/heroes';
-import { dump } from '../../../shared/utilities/tools';
+import { dump } from '../../../_shared/utilities/tools';
 
 @Controller('tst')
 export class TstController {

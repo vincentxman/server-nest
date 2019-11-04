@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Cat } from './models/cat';
 import { CatDto } from './dto/cat.dto';
-import { FindOption } from '../../../shared/utilities/pagination';
+import { FindOption } from '../../../_shared/utilities/pagination';
 
 @Injectable()
 export class CatsService {

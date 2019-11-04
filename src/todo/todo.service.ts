@@ -1,8 +1,8 @@
 import { HttpService, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ModelType } from '@hasezoey/typegoose';
-import { BaseService } from '../shared/base.service';
-import { MapperService } from '../shared/mapper/mapper.service';
+import { BaseService } from '../_shared/base.service';
+import { MapperService } from '../_shared/mapper/mapper.service';
 import { Todo } from './models/todo.model';
 import { TodoParams } from './models/view-models/todo-params.model';
 

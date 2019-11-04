@@ -10,7 +10,7 @@
         "node_modules": true,
         "**/*.lnk": true,
         "dist": true,
-        ".vscode": false,
+        ".vscode": true,
         "test": true,
         "**/app.controller.spec.ts": true
     },

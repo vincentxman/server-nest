@@ -30,5 +30,6 @@
       "log"
     ]
   },
+  "unified-signatures": false,
   "rulesDirectory": []
 }

@@ -2,17 +2,17 @@ import { Controller, Get, Post, Put, Delete, Body, Param, UsePipes } from '@nest
 import { CreateItemDto } from './dto/create-item.dto';
 import { ItemsService } from './items.service';
 import { Item } from './interfaces/item.interface';
-import { TestPipe } from './validation.pipe';
+import { TestPipe } from '../../../_shared/pipes/validation.pipe';
 
 @Controller('items')
 // @UsePipes(TestPipe)
 export class ItemsController {
-    constructor(private readonly itemsService: ItemsService) { }s
+    constructor(private readonly itemsService: ItemsService) { } s
     // CRUD Create/Read/Update/Delete
 
     @Post()
-    @UsePipes(TestPipe)
-    async create(@Body() createItemDto: CreateItemDto): Promise<Item> {
+    // @UsePipes(TestPipe)
+    async create( @Body(new TestPipe()) createItemDto: CreateItemDto): Promise<Item> {
         return this.itemsService.create(createItemDto);
     }
 
