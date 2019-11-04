@@ -5,7 +5,7 @@ import { ModelType } from '@hasezoey/typegoose';
 import { AuthService } from '../auth/auth.service';
 import { JwtPayload } from '../auth/jwt-payload.model';
 import { BaseService } from '../../_shared/base.service';
-import { MapperService } from '../../_shared/mapper/mapper.service';
+import { MapperService } from '../mapper/mapper.service';
 import { User } from './models/user.model';
 import { LoginResponseVm } from './models/view-models/login-response-vm.model';
 import { LoginVm } from './models/view-models/login-vm.model';

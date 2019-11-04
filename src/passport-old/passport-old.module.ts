@@ -3,7 +3,7 @@ import { AuthService } from './auth/auth.service';
 import { JwtStrategy } from './auth/strategies/jwt-strategy.service';
 import { UserModule } from './user/user.module';
 import { TodoModule } from './todo/todo.module';
-import { SharedModule } from '../_shared/shared.module';
+import { SharedModule } from './shared.module';
 
 @Global()
 @Module({
