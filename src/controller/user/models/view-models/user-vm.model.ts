@@ -1,7 +1,7 @@
 import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
-import { BaseModelVm } from '../../../_shared/base.model';
-import { UserRole } from '../user-role.enum';
+import { BaseModelVm } from '../../../../_shared/base.model';
 import { Expose } from 'class-transformer';
+import { UserRole } from '../user-role.enum';
 
 export class UserVm extends BaseModelVm {
     @ApiModelProperty()

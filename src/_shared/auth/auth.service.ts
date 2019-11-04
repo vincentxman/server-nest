@@ -1,7 +1,7 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { sign, SignOptions } from 'jsonwebtoken';
-import { User } from '../../user/models/user.model';
-import { UserService } from '../../user/user.service';
+import { User } from '../../controller/user/models/user.model';
+import { UserService } from '../../controller/user/user.service';
 import { JwtPayload } from './jwt-payload.model';
 import config from '../_config/keys';
 

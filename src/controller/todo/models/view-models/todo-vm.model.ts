@@ -1,5 +1,5 @@
 import { ApiModelProperty } from '@nestjs/swagger';
-import { BaseModelVm } from '../../../_shared/base.model';
+import { BaseModelVm } from '../../../../_shared/base.model';
 import { TodoLevel } from '../todo-level.enum';
 import { Expose } from 'class-transformer';
 

@@ -22,18 +22,18 @@ import {
     ApiUseTags,
 } from '@nestjs/swagger';
 import { isArray, map } from 'lodash';
-import { ApiException } from '../_shared/api-exception.model';
-import { ToBooleanPipe } from '../_shared/pipes/to-boolean.pipe';
-import { GetOperationId } from '../_shared/utilities/get-operation-id.helper';
+import { ApiException } from '../../_shared/api-exception.model';
+import { ToBooleanPipe } from '../../_shared/pipes/to-boolean.pipe';
+import { GetOperationId } from '../../_shared/utilities/get-operation-id.helper';
 import { TodoLevel } from './models/todo-level.enum';
 import { Todo } from './models/todo.model';
 import { TodoParams } from './models/view-models/todo-params.model';
 import { TodoVm } from './models/view-models/todo-vm.model';
 import { TodoService } from './todo.service';
-import { Roles } from '../_shared/decorators/roles.decorator';
-import { UserRole } from '../user/models/user-role.enum';
+import { Roles } from '../../_shared/decorators/roles.decorator';
 import { AuthGuard } from '@nestjs/passport';
-import { RolesGuard } from '../_shared/guards/roles.guard';
+import { RolesGuard } from '../../_shared/guards/roles.guard';
+import { UserRole } from '../user/models/user-role.enum';
 
 @Controller('todos')
 @ApiUseTags(Todo.modelName)

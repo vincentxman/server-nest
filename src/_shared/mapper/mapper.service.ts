@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import {AutoMapper, Mapper, Configuration} from 'automapper-nartc';
-import { User } from '../../user/models/user.model';
-import { UserVm } from '../../user/models/view-models/user-vm.model';
-import { Todo } from '../../todo/models/todo.model';
-import { TodoVm } from '../../todo/models/view-models/todo-vm.model';
+import { User } from '../../controller/user/models/user.model';
+import { UserVm } from '../../controller/user/models/view-models/user-vm.model';
+import { Todo } from '../../controller/todo/models/todo.model';
+import { TodoVm } from '../../controller/todo/models/view-models/todo-vm.model';
 
 @Injectable()
 export class MapperService {

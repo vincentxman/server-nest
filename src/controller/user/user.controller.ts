@@ -1,7 +1,7 @@
 import { Body, Controller, HttpException, HttpStatus, Post } from '@nestjs/common';
 import { ApiBadRequestResponse, ApiCreatedResponse, ApiOperation, ApiUseTags } from '@nestjs/swagger';
-import { ApiException } from '../_shared/api-exception.model';
-import { GetOperationId } from '../_shared/utilities/get-operation-id.helper';
+import { ApiException } from '../../_shared/api-exception.model';
+import { GetOperationId } from '../../_shared/utilities/get-operation-id.helper';
 import { User } from './models/user.model';
 import { LoginResponseVm } from './models/view-models/login-response-vm.model';
 import { LoginVm } from './models/view-models/login-vm.model';
