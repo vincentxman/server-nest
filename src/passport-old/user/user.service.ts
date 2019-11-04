@@ -2,8 +2,8 @@ import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nest
 import { InjectModel } from '@nestjs/mongoose';
 import { compare, genSalt, hash } from 'bcryptjs';
 import { ModelType } from '@hasezoey/typegoose';
-import { AuthService } from '../../_shared/auth/auth.service';
-import { JwtPayload } from '../../_shared/auth/jwt-payload.model';
+import { AuthService } from '../auth/auth.service';
+import { JwtPayload } from '../auth/jwt-payload.model';
 import { BaseService } from '../../_shared/base.service';
 import { MapperService } from '../../_shared/mapper/mapper.service';
 import { User } from './models/user.model';

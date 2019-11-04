@@ -1,9 +1,9 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { sign, SignOptions } from 'jsonwebtoken';
 import { JwtPayload } from './jwt-payload.model';
-import { User } from '../../passport-old/user/models/user.model';
-import { UserService } from '../../passport-old/user/user.service';
-import keys from '../_config/keys';
+import { User } from '../user/models/user.model';
+import { UserService } from '../user/user.service';
+import keys from '../../_shared/_config/keys';
 
 @Injectable()
 export class AuthService {
