@@ -3,17 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { GraphQLModule } from '@nestjs/graphql';
-import { GrQlModule } from './resolver/sandbox/gr-ql/gr-ql.module';
 import keys from './_shared/_config/keys';
 import { SharedModule } from './_shared/shared.module';
-import { UserModule } from './passport-old/user/user.module';
-import { TodoModule } from './passport-old/todo/todo.module';
 
 import { ItemsModule } from './controller/sandbox/tems/items.module';
-import { GrCatsModule } from './resolver/sandbox/gr-cats/gr-cats.module';
 import { TstController } from './controller/sandbox/tst/tst.controller';
 import { ExerciseMiddleware } from './_shared/middleware/exercise.middleware';
 import { PassportOldModule } from './passport-old/passport-old.module';
+import { ResolverModule } from './resolver/resolver.module';
 
 
 
@@ -24,9 +21,8 @@ import { PassportOldModule } from './passport-old/passport-old.module';
     SharedModule,
     PassportOldModule,
 
-    GrCatsModule,
     ItemsModule,
-    GrQlModule,
+    ResolverModule,
   ],
   controllers: [
     AppController,

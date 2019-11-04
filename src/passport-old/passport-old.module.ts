@@ -6,9 +6,9 @@ import { TodoModule } from './todo/todo.module';
 
 @Global()
 @Module({
+    imports: [TodoModule, UserModule],
     providers: [AuthService, JwtStrategy],
     exports: [TodoModule, UserModule, AuthService],
-    imports: [TodoModule, UserModule],
 })
 export class PassportOldModule {
 }

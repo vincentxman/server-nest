@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 
 import { products, Product } from './mockdata/products';
 import { heroes, Hero } from './mockdata/heroes';
-import { LoggingInterceptor } from '../../../passport-old/interceptors/logging.interceptor';
+import { LoggingInterceptor } from '../../../_shared/interceptors/logging.interceptor';
 
 @Controller('tst')
 @UseInterceptors(LoggingInterceptor)
