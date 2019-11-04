@@ -30,9 +30,9 @@ import { Todo } from './models/todo.model';
 import { TodoParams } from './models/view-models/todo-params.model';
 import { TodoVm } from './models/view-models/todo-vm.model';
 import { TodoService } from './todo.service';
-import { Roles } from '../../_shared/decorators/roles.decorator';
+import { Roles } from '../decorators/roles.decorator';
 import { AuthGuard } from '@nestjs/passport';
-import { RolesGuard } from '../../_shared/guards/roles.guard';
+import { RolesGuard } from '../guards/roles.guard';
 import { UserRole } from '../user/models/user-role.enum';
 
 @Controller('todos')
