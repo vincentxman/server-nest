@@ -1,9 +1,8 @@
-import { Controller, Get, Req, Res, HttpCode, Post, HttpException, HttpStatus, ForbiddenException, UnauthorizedException, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Req, Res, Post, UnauthorizedException, UseInterceptors } from '@nestjs/common';
 import { Request, Response } from 'express';
 
 import { products, Product } from './mockdata/products';
 import { heroes, Hero } from './mockdata/heroes';
-import { dump } from '../../../_shared/utilities/tools';
 import { LoggingInterceptor } from '../../../_shared/interceptors/logging.interceptor';
 
 @Controller('tst')
