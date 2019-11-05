@@ -4,7 +4,7 @@ import { ItemsService } from './items.service';
 import { Item } from './interfaces/item.interface';
 import { TestPipe } from '../../../_shared/pipes/validation.pipe';
 
-@Controller('items')
+@Controller('api/items')
 // @UsePipes(TestPipe) // 管道放这里整个类有效
 export class ItemsController {
     constructor(private readonly itemsService: ItemsService) { } s
@@ -17,8 +17,8 @@ export class ItemsController {
     }
 
     @Get()
-    async findAll(): Promise<Item[]> {
-        return this.itemsService.findAll();
+    async findSome(): Promise<Item[]> {
+        return this.itemsService.findSome();
     }
 
     @Get(':id')

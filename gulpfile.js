@@ -16,7 +16,7 @@ var config = {
     include: ['*', '**/*'],
 
     // e.g. exclude sourcemaps, and ALL files in node_modules (including dot files)
-    exclude: ['**/*.bak', "node_modules/**", "node_modules/**/.*",],
+    exclude: ['**/*.d.ts', '**/*.js.map', '**/*.bak', "node_modules/**", "node_modules/**/.*",],
 
     // delete ALL existing files at destination before uploading, if true
     deleteRemote: true,
