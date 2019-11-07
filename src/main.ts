@@ -18,6 +18,10 @@ async function bootstrap() {
     // { maxAge: '1d', extensions: ['jpg', 'jpeg', 'png', 'gif'] },
   ));
 
+  app.use('/docs',
+    serveStatic(path.join(__dirname, '../docs'),
+  ));
+
   doSwagger(app, '/api/docs');
 
   // app.setGlobalPrefix('api');
