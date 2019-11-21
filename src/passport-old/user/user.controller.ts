@@ -9,7 +9,7 @@ import { RegisterVm } from './models/view-models/register-vm.model';
 import { UserVm } from './models/view-models/user-vm.model';
 import { UserService } from './user.service';
 
-@Controller('user')
+@Controller('api/user')
 @ApiUseTags(User.modelName)
 export class UserController {
     constructor(private readonly _userService: UserService) {}
