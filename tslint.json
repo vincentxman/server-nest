@@ -31,5 +31,6 @@
     ]
   },
   "unified-signatures": false,
-  "rulesDirectory": []
+  "rulesDirectory": [],
+  "curly": false,
 }

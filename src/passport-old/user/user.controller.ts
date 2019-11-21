@@ -8,6 +8,7 @@ import { LoginVm } from './models/view-models/login-vm.model';
 import { RegisterVm } from './models/view-models/register-vm.model';
 import { UserVm } from './models/view-models/user-vm.model';
 import { UserService } from './user.service';
+import { dump } from '../../_shared/utilities/tools';
 
 @Controller('api/user')
 @ApiUseTags(User.modelName)
@@ -19,8 +20,8 @@ export class UserController {
     @ApiBadRequestResponse({ type: ApiException })
     @ApiOperation(GetOperationId(User.modelName, 'Register'))
     async register(@Body() vm: RegisterVm): Promise<UserVm> {
+        dump(vm, 'api/user/register', true);
         const { username, password } = vm;
-
         if (!username) {
             throw new HttpException('Username is required', HttpStatus.BAD_REQUEST);
         }
