@@ -28,7 +28,7 @@ export class GrCatsResolver {
       pagination: {
         skip,
         limit,
-      }
+      },
     };
     return this.catsService.findAll(option);
   }

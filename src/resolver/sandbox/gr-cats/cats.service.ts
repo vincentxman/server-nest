@@ -23,7 +23,7 @@ export class CatsService {
             {
                 skip: pg.skip,
                 limit: pg.limit,
-            }
+            },
         );
     }
 
