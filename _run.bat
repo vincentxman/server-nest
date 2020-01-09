@@ -1,0 +1,1 @@
+start "" "D:\VSCode\Code.exe" .

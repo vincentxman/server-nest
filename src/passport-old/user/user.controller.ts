@@ -10,7 +10,7 @@ import { UserVm } from './models/view-models/user-vm.model';
 import { UserService } from './user.service';
 import { dump } from '../../_shared/utilities/tools';
 
-@Controller('api/user')
+@Controller('api/users')
 @ApiUseTags(User.modelName)
 export class UserController {
     constructor(private readonly _userService: UserService) {}
@@ -20,7 +20,7 @@ export class UserController {
     @ApiBadRequestResponse({ type: ApiException })
     @ApiOperation(GetOperationId(User.modelName, 'Register'))
     async register(@Body() vm: RegisterVm): Promise<UserVm> {
-        dump(vm, 'api/user/register', true);
+        dump(vm, 'api/users/register', true);
         const { username, password } = vm;
         if (!username) {
             throw new HttpException('Username is required', HttpStatus.BAD_REQUEST);
@@ -50,6 +50,7 @@ export class UserController {
     @ApiBadRequestResponse({ type: ApiException })
     @ApiOperation(GetOperationId(User.modelName, 'Login'))
     async login(@Body() vm: LoginVm): Promise<LoginResponseVm> {
+        dump(vm, 'api/users/login', true);
         const fields = Object.keys(vm);
         fields.forEach(field => {
             if (!vm[field]) {
