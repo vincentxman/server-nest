@@ -9,7 +9,7 @@ import keys from '../../../_shared/_config/keys';
 export class JwtStrategy extends PassportStrategy(Strategy) {
     constructor(
         private readonly _authService: AuthService,
-    ) {
+    ) { 
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
             secretOrKey: keys.JWT_KEY,
