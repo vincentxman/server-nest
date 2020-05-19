@@ -5,16 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch Chrome",
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome",
             "url": "http://localhost:8000",
             "webRoot": "${workspaceFolder}"
         },
         {
+            "name": "NestJS",
             "type": "node",
             "request": "launch",
-            "name": "NestJS",
             "runtimeArgs": [
                 "--nolazy",
                 "-r",
